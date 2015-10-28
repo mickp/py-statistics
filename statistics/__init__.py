@@ -362,7 +362,7 @@ def median_high(data):
 
 
 def median_grouped(data, interval=1):
-    u""""Return the 50th percentile (median) of grouped continuous data.
+    u"""Return the 50th percentile (median) of grouped continuous data.
 
     >>> median_grouped([1, 2, 2, 3, 4, 4, 4, 4, 4, 5])
     3.7
