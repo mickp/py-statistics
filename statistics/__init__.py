@@ -85,7 +85,6 @@ __all__ = [ u'StatisticsError',
             u'mean', u'mode', u'geometric_mean', u'harmonic_mean',
           ]
 
-
 import collections
 import decimal
 import math
@@ -338,10 +337,7 @@ class _nroot_NS:
         u"""Handle nth root of Reals, treated as a float."""
         assert isinstance(n, int) and n > 1
         if x < 0:
-            if n%2 == 0:
-                raise ValueError(u'domain error: even root of negative number')
-            else:
-                return -_nroot_NS.nroot(-x, n)
+            raise ValueError(u'domain error: root of negative number')
         elif x == 0:
             return math.copysign(0.0, x)
         elif x > 0:
@@ -436,6 +432,8 @@ class _nroot_NS:
             else:
                 # Preserve the input NAN.
                 return x
+        if x < 0:
+            raise ValueError(u'domain error: root of negative number')
         if x.is_infinite():
             return x
         # FIXME this hasn't had the extensive testing of the float
