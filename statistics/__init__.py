@@ -12,6 +12,7 @@ Calculating averages
 Function            Description
 ==================  =============================================
 mean                Arithmetic mean (average) of data.
+geometric_mean      Geometric mean of data.
 harmonic_mean       Harmonic mean of data.
 median              Median (middle value) of data.
 median_low          Low median of data.
@@ -81,7 +82,7 @@ from __future__ import division
 __all__ = [ u'StatisticsError',
             u'pstdev', u'pvariance', u'stdev', u'variance',
             u'median',  u'median_low', u'median_high', u'median_grouped',
-            u'mean', u'mode',
+            u'mean', u'mode', u'geometric_mean', u'harmonic_mean',
           ]
 
 
