@@ -456,7 +456,7 @@ class _nroot_NS:
         u"""Return the nth root of a positive huge number."""
         assert x > 0
         # I state without proof that ⁿ√x ≈ ⁿ√2·ⁿ√(x//2)
-        # and that for sufficiently big x the error is acceptible.
+        # and that for sufficiently big x the error is acceptable.
         # We now halve x until it is small enough to get the root.
         m = 0
         while True:
