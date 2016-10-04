@@ -3,18 +3,18 @@
 
 .. module:: statistics
    :synopsis: mathematical statistics functions
+
 .. moduleauthor:: Steven D'Aprano <steve+python@pearwood.info>
 .. sectionauthor:: Steven D'Aprano <steve+python@pearwood.info>
-.. portauthor:: Stefano Crosta <stefano@digitalemagine.com>
 
-.. versionadded:: 2.* (backport from 3.4)
+.. versionadded:: 3.4
+
+**Source code:** :source:`Lib/statistics.py`
 
 .. testsetup:: *
 
    from statistics import *
    __name__ = '<doctest>'
-
-**Source code:** :source:`Lib/statistics.py`
 
 --------------
 
@@ -39,6 +39,7 @@ or sample.
 
 =======================  =============================================
 :func:`mean`             Arithmetic mean ("average") of data.
+:func:`harmonic_mean`    Harmonic mean of data.
 :func:`median`           Median (middle value) of data.
 :func:`median_low`       Low median of data.
 :func:`median_high`      High median of data.
@@ -109,6 +110,38 @@ However, for reading convenience, most of the examples show sorted sequences.
       ``mean(sample)`` converges on the true mean of the entire population.  If
       *data* represents the entire population rather than a sample, then
       ``mean(data)`` is equivalent to calculating the true population mean μ.
+
+
+.. function:: harmonic_mean(data)
+
+   Return the harmonic mean of *data*, a sequence or iterator of
+   real-valued numbers.
+
+   The harmonic mean, sometimes called the subcontrary mean, is the
+   reciprocal of the arithmetic :func:`mean` of the reciprocals of the
+   data. For example, the harmonic mean of three values *a*, *b* and *c*
+   will be equivalent to ``3/(1/a + 1/b + 1/c)``.
+
+   The harmonic mean is a type of average, a measure of the central
+   location of the data.  It is often appropriate when averaging quantities
+   which are rates or ratios, for example speeds. For example:
+
+   Suppose an investor purchases an equal value of shares in each of
+   three companies, with P/E (price/earning) ratios of 2.5, 3 and 10.
+   What is the average P/E ratio for the investor's portfolio?
+
+   .. doctest::
+
+      >>> harmonic_mean([2.5, 3, 10])  # For an equal investment portfolio.
+      3.6
+
+   Using the arithmetic mean would give an average of about 5.167, which
+   is too high.
+
+   :exc:`StatisticsError` is raised if *data* is empty, or any element
+   is less than zero.
+
+   .. versionadded:: 3.6
 
 
 .. function:: median(data)
@@ -224,10 +257,10 @@ However, for reading convenience, most of the examples show sorted sequences.
       * "Statistics for the Behavioral Sciences", Frederick J Gravetter and
         Larry B Wallnau (8th Edition).
 
-      * Calculating the `median <http://www.ualberta.ca/~opscan/median.html>`_.
+      * Calculating the `median <https://www.ualberta.ca/~opscan/median.html>`_.
 
       * The `SSMEDIAN
-        <https://projects.gnome.org/gnumeric/doc/gnumeric-function-SSMEDIAN.shtml>`_
+        <https://help.gnome.org/users/gnumeric/stable/gnumeric.html#gnumeric-function-SSMEDIAN>`_
         function in the Gnome Gnumeric spreadsheet, including `this discussion
         <https://mail.gnome.org/archives/gnumeric-list/2011-April/msg00018.html>`_.
 
