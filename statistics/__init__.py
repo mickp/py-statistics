@@ -81,7 +81,7 @@ from __future__ import division
 __all__ = [ u'StatisticsError',
             u'pstdev', u'pvariance', u'stdev', u'variance',
             u'median',  u'median_low', u'median_high', u'median_grouped',
-            u'mean', u'mode', u'harmonic_mean',
+            u'mean', u'mode', u'harmonic_mean', u'fmean',
           ]
 
 import collections
@@ -314,6 +314,32 @@ def mean(data):
     assert count == n
     return _convert(total/n, T)
 
+def fmean(data):
+    u""" Convert data to floats and compute the arithmetic mean.
+
+    This runs faster than the mean() function and it always returns a float.
+    The result is highly accurate but not as perfect as mean().
+    If the input dataset is empty, it raises a StatisticsError.
+
+    >>> fmean([3.5, 4.0, 5.25])
+    4.25
+
+    """
+    try:
+        n = len(data)
+    except TypeError:
+        # Handle iterators that do not define __len__().
+        n = 0
+        def count(x):
+            n += 1
+            return x
+        total = math.fsum(map(count, data))
+    else:
+        total = math.fsum(data)
+    try:
+        return total / n
+    except ZeroDivisionError:
+        raise StatisticsError(u'fmean requires at least one data point')
 
 def harmonic_mean(data):
     u"""Return the harmonic mean of data.
