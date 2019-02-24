@@ -743,6 +743,16 @@ class NormalDist:
         return 0.5 * (1.0 + erf((x - self.mu) / (self.sigma * sqrt(2.0))))
 
     @property
+    def mean(self):
+        u'Arithmetic mean of the normal distribution'
+        return self.mu
+
+    @property
+    def stdev(self):
+        u'Standard deviation of the normal distribution'
+        return self.sigma
+
+    @property
     def variance(self):
         u'Square of the standard deviation'
         return self.sigma ** 2.0
