@@ -737,7 +737,7 @@ class NormalDist:
         return exp((x - self.mu)**2.0 / (-2.0*variance)) / sqrt(tau * variance)
 
     def cdf(self, x):
-        u'Cumulative density function:  P(X <= x)'
+        u'Cumulative distribution function:  P(X <= x)'
         if not self.sigma:
             raise StatisticsError(u'cdf() not defined when sigma is zero')
         return 0.5 * (1.0 + erf((x - self.mu) / (self.sigma * sqrt(2.0))))
