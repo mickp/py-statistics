@@ -712,7 +712,8 @@ class NormalDist:
     # https://en.wikipedia.org/wiki/Normal_distribution
     # https://en.wikipedia.org/wiki/Variance#Properties
 
-    __slots__ = ('mu', 'sigma')
+    __slots__ = {'mu': u'Arithmetic mean of a normal distribution',
+                 'sigma': u'Standard deviation of a normal distribution'}
 
     def __init__(self, mu=0.0, sigma=1.0):
         u'NormalDist where mu is the mean and sigma is the standard deviation.'
